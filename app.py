@@ -549,19 +549,13 @@ elif categoria == "Sistemas Lineares":
             card(st, "Dimensão", f"{len(sol)} × {len(sol)}")
             card(st, "Etapas", str(len(etapas)))
         with col_visual:
-            tab_g, tab_t = st.tabs(["Visualização", "Tabelas"])
-            with tab_g:
-                fig = fig_base("Vetor solução", "Variável", "Valor")
-                fig.add_trace(go.Bar(x=[f"x{i+1}" for i in range(len(sol))], y=sol, marker_color="#4FC28A", name="x"))
-                st.plotly_chart(fig, use_container_width=True)
-            with tab_t:
-                st.markdown("**Vetor Solução x:**")
-                st.dataframe(df_sol.style.format("{:.6f}"), use_container_width=True)
-                st.markdown("**Passos do Escalonamento:**")
-                for et in etapas:
-                    st.caption(f"Passo {et['passo']} — {et['descricao']}")
-                    df_e = pd.DataFrame(et['matriz'], columns=[f"x{j+1}" for j in range(len(sol))] + ["b"])
-                    st.dataframe(df_e.style.format("{:.4f}"), use_container_width=True)
+            st.markdown("**Vetor Solução x:**")
+            st.dataframe(df_sol.style.format("{:.6f}"), use_container_width=True)
+            st.markdown("**Passos do Escalonamento:**")
+            for et in etapas:
+                st.caption(f"Passo {et['passo']} — {et['descricao']}")
+                df_e = pd.DataFrame(et['matriz'], columns=[f"x{j+1}" for j in range(len(sol))] + ["b"])
+                st.dataframe(df_e.style.format("{:.4f}"), use_container_width=True)
 
     elif met_ativo_sl == "Fatoração LU" and "lu_sol" in st.session_state:
         sol, L, U, y = st.session_state.lu_sol
@@ -572,21 +566,15 @@ elif categoria == "Sistemas Lineares":
             card(st, "Dimensão", f"{len(sol)} × {len(sol)}")
             card(st, "Fatoração", "L · U")
         with col_visual:
-            tab_g, tab_t = st.tabs(["Visualização", "Tabelas"])
-            with tab_g:
-                fig = fig_base("Vetor solução", "Variável", "Valor")
-                fig.add_trace(go.Bar(x=[f"x{i+1}" for i in range(len(sol))], y=sol, marker_color="#4FC28A", name="x"))
-                st.plotly_chart(fig, use_container_width=True)
-            with tab_t:
-                st.markdown("**Vetor Solução x:**")
-                st.dataframe(df_sol.style.format("{:.6f}"), use_container_width=True)
-                cL, cU = st.columns(2)
-                with cL:
-                    st.caption("Matriz L (Triangular Inferior)")
-                    st.dataframe(pd.DataFrame(L, columns=[f"c{j+1}" for j in range(len(sol))]).style.format("{:.4f}"), use_container_width=True)
-                with cU:
-                    st.caption("Matriz U (Triangular Superior)")
-                    st.dataframe(pd.DataFrame(U, columns=[f"c{j+1}" for j in range(len(sol))]).style.format("{:.4f}"), use_container_width=True)
+            st.markdown("**Vetor Solução x:**")
+            st.dataframe(df_sol.style.format("{:.6f}"), use_container_width=True)
+            cL, cU = st.columns(2)
+            with cL:
+                st.caption("Matriz L (Triangular Inferior)")
+                st.dataframe(pd.DataFrame(L, columns=[f"c{j+1}" for j in range(len(sol))]).style.format("{:.4f}"), use_container_width=True)
+            with cU:
+                st.caption("Matriz U (Triangular Superior)")
+                st.dataframe(pd.DataFrame(U, columns=[f"c{j+1}" for j in range(len(sol))]).style.format("{:.4f}"), use_container_width=True)
 
     elif ("sistemas_hist" in st.session_state) and ("Jacobi" in met_ativo_sl or "Seidel" in met_ativo_sl):
         hist = st.session_state.sistemas_hist
