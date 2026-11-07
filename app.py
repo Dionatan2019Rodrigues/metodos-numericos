@@ -38,7 +38,8 @@ from regra_trapezios import regra_trapezios_repetida, regra_trapezios_detalhada
 from regra_simpson import regra_simpson_13, regra_simpson_detalhada
 
 st.set_page_config(
-    page_title="Métodos Numéricos",
+    page_title="Dionatan Rodrigues",
+    page_icon=str(ROOT_DIR / "assets" / "favicon-octocat.png"),
     layout="wide",
     initial_sidebar_state="expanded"
 )
