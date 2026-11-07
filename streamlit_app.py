@@ -21,7 +21,7 @@ for module_dir in MODULE_DIRS:
     if str(module_dir) not in sys.path:
         sys.path.insert(0, str(module_dir))
 
-from sanitizador import sanitiza_expressao, processa_expressao_natural
+from normalizador import normaliza_expressao, processa_expressao_natural
 from bissecao import bissecao
 from falsa_posicao import falsa_posicao
 from newton import newton

@@ -1,5 +1,5 @@
 import math
-from sanitizador import sanitiza_expressao
+from normalizador import normaliza_expressao
 
 def avalia_funcao_segura(expr, x_val):
     namespace = {
@@ -32,7 +32,7 @@ def regra_simpson_13(expr, a, b, n):
     return area
 
 def regra_simpson_detalhada(expr, a, b, n):
-    expr = sanitiza_expressao(expr)
+    expr = normaliza_expressao(expr)
     n = int(n)
     if n % 2 != 0:
         return None, None, [], 0.0, 0.0, []

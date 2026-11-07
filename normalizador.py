@@ -7,7 +7,7 @@ from sympy.parsing.sympy_parser import (
     convert_xor
 )
 
-def sanitiza_expressao(s):
+def normaliza_expressao(s):
     if not isinstance(s, str):
         return str(s)
     s = s.strip()
@@ -53,4 +53,3 @@ def processa_expressao_natural(texto):
             return str(expr_sym), sp.latex(expr_sym), None
         except Exception:
             return None, '', str(e)
-

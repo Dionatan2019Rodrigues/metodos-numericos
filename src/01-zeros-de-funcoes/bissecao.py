@@ -1,5 +1,5 @@
 import math
-from sanitizador import sanitiza_expressao
+from normalizador import normaliza_expressao
 
 def avalia_funcao_segura(expr, x_val):
     namespace = {
@@ -28,7 +28,7 @@ def func(x, expr):
     return avalia_funcao_segura(expr, x)
 
 def bissecao(expr, a, b, tol, max_iter=100):
-    expr = sanitiza_expressao(expr)
+    expr = normaliza_expressao(expr)
     fa = func(a, expr)
     fb = func(b, expr)
 

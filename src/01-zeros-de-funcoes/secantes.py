@@ -1,5 +1,5 @@
 import math
-from sanitizador import sanitiza_expressao
+from normalizador import normaliza_expressao
 
 def avalia_funcao_segura(expr, x_val):
     namespace = {
@@ -28,7 +28,7 @@ def func(x, expr):
     return avalia_funcao_segura(expr, x)
 
 def secantes(expr, x0, x1, tol, max_iter=100):
-    expr = sanitiza_expressao(expr)
+    expr = normaliza_expressao(expr)
     historico = []
     x_prev = float(x0)
     x_curr = float(x1)

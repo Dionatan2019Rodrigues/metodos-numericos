@@ -1,6 +1,6 @@
 import math
 import sympy as sp
-from sanitizador import sanitiza_expressao
+from normalizador import normaliza_expressao
 
 def avalia_funcao_segura(expr, x_val):
     namespace = {
@@ -38,7 +38,7 @@ def derivada(x_val, expr, h=1e-7):
         return (func(x_val + h, expr) - func(x_val - h, expr)) / (2.0 * h)
 
 def newton(expr, chute, tol, max_iter=100):
-    expr = sanitiza_expressao(expr)
+    expr = normaliza_expressao(expr)
     historico = []
     x_atual = float(chute)
 

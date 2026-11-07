@@ -1,5 +1,5 @@
 import math
-from sanitizador import sanitiza_expressao
+from normalizador import normaliza_expressao
 
 def avalia_funcao_segura(expr, x_val):
     namespace = {
@@ -32,7 +32,7 @@ def regra_trapezios_repetida(expr, a, b, n):
     return area
 
 def regra_trapezios_detalhada(expr, a, b, n):
-    expr = sanitiza_expressao(expr)
+    expr = normaliza_expressao(expr)
     n = int(n)
     h = (b - a) / n
     x_nodes = [a + i * h for i in range(n + 1)]

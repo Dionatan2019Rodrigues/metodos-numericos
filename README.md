@@ -15,7 +15,7 @@ O sistema foi construído com uma separação simples entre interface, tratament
 ```mermaid
 flowchart LR
     U[Usuário] --> UI[Streamlit em streamlit_app.py]
-    UI --> S[sanitizador.py]
+    UI --> S[normalizador.py]
     S --> E[Expressão normalizada]
     UI --> M[Módulo numérico]
     M --> R[Resultado e histórico]
@@ -41,7 +41,7 @@ flowchart LR
 | -------------------------------- | --------------------------------------------------------- |
 | `streamlit_app.py`               | Ponto de entrada, interface e integração entre os métodos |
 | `style.css`                      | Identidade visual e responsividade da aplicação           |
-| `sanitizador.py`                 | Normalização de expressões digitadas pelo usuário         |
+| `normalizador.py`                | Normalização de expressões digitadas pelo usuário         |
 | `src/01-zeros-de-funcoes`        | Bisseção, falsa posição, Newton-Raphson e secantes        |
 | `src/02-sistemas-lineares`       | Gauss, LU, Jacobi e Gauss-Seidel                          |
 | `src/03-ajuste-de-curvas`        | Ajuste polinomial por mínimos quadrados                   |
@@ -132,7 +132,7 @@ O número de subintervalos de Simpson precisa ser par. As versões detalhadas re
 
 ### Expressões aceitas
 
-O sanitizador reconhece operações e nomes comuns antes da avaliação numérica:
+O normalizador reconhece operações e nomes comuns antes da avaliação numérica:
 
 | Categoria               | Exemplos                                                             |
 | ----------------------- | -------------------------------------------------------------------- |
