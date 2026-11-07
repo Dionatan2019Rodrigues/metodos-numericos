@@ -10,11 +10,11 @@ Aplicação interativa para estudar, executar e comparar métodos clássicos de 
 
 ### Visão geral
 
-O sistema foi construído com uma separação simples entre interface, tratamento de expressões e algoritmos matemáticos. O arquivo `app.py` é o ponto de entrada e coordena a experiência inteira: seleção do módulo, entrada de dados, execução do método, apresentação dos resultados e atualização dos gráficos.
+O sistema foi construído com uma separação simples entre interface, tratamento de expressões e algoritmos matemáticos. O arquivo `streamlit_app.py` é o ponto de entrada e coordena a experiência inteira: seleção do módulo, entrada de dados, execução do método, apresentação dos resultados e atualização dos gráficos.
 
 ```mermaid
 flowchart LR
-    U[Usuário] --> UI[Streamlit em app.py]
+    U[Usuário] --> UI[Streamlit em streamlit_app.py]
     UI --> S[sanitizador.py]
     S --> E[Expressão normalizada]
     UI --> M[Módulo numérico]
@@ -39,7 +39,7 @@ flowchart LR
 
 | Local                            | Responsabilidade                                          |
 | -------------------------------- | --------------------------------------------------------- |
-| `app.py`                         | Ponto de entrada, interface e integração entre os métodos |
+| `streamlit_app.py`               | Ponto de entrada, interface e integração entre os métodos |
 | `style.css`                      | Identidade visual e responsividade da aplicação           |
 | `sanitizador.py`                 | Normalização de expressões digitadas pelo usuário         |
 | `src/01-zeros-de-funcoes`        | Bisseção, falsa posição, Newton-Raphson e secantes        |
@@ -50,7 +50,7 @@ flowchart LR
 
 ### Decisões de implementação
 
-- Os diretórios em `src` possuem nomes descritivos, inclusive com hífens e acentos. Por isso, `app.py` adiciona seus caminhos ao `sys.path` usando a localização real do arquivo, evitando dependência do diretório de onde o comando foi executado.
+- Os diretórios em `src` possuem nomes descritivos, inclusive com hífens e acentos. Por isso, `streamlit_app.py` adiciona seus caminhos ao `sys.path` usando a localização real do arquivo, evitando dependência do diretório de onde o comando foi executado.
 - As expressões podem ser digitadas com notação próxima da linguagem natural, como `2x`, `sen(x)`, `ln(x)`, `x^3` e números decimais com vírgula.
 - Os métodos detalhados retornam históricos, matrizes intermediárias ou tabelas para que a interface mostre não apenas o resultado final, mas também o caminho da solução.
 - O frontend usa uma área de resultado consistente: métricas ficam à esquerda, gráficos na primeira aba e tabelas ou detalhes na segunda aba.
@@ -192,10 +192,10 @@ uv sync
 
 ### 4. Iniciar a aplicação
 
-O ponto de entrada do projeto é `app.py`:
+O ponto de entrada do projeto é `streamlit_app.py`:
 
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 Depois da inicialização, abra o endereço exibido no terminal, normalmente:
@@ -203,4 +203,3 @@ Depois da inicialização, abra o endereço exibido no terminal, normalmente:
 ```text
 http://localhost:8501
 ```
-
